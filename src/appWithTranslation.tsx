@@ -19,8 +19,7 @@ export const appWithTranslation = <Props extends NextJsAppProps>(
 ) => {
   const AppWithTranslation = (props: Props & { pageProps: Props['pageProps'] & SSRConfig }) => {
     const { _nextI18Next } = props.pageProps
-    let locale: string | undefined =
-      _nextI18Next?.initialLocale ?? props?.router?.locale
+    let locale = props?.router.query?.language as string | undefined
     const ns = _nextI18Next?.ns
 
     // Memoize the instance and only re-initialize when either:
